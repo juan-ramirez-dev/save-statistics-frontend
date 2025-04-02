@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend de Save Statistics
 
-## Getting Started
+Este proyecto frontend está desarrollado con Next.js 15 y React 19, proporcionando una interfaz moderna y eficiente para gestionar y visualizar estadísticas de clicks.
 
-First, run the development server:
+## Características
+
+- **Autenticación Segura**: Sistema completo de registro e inicio de sesión con protección JWT
+- **Dashboard Interactivo**: Visualización de estadísticas en tiempo real
+- **Gráficos Avanzados**: Representaciones visuales con Recharts para un análisis intuitivo
+- **Filtros Temporales**: Análisis por día, semana, mes o periodos personalizados
+- **Tema Oscuro/Claro**: Soporte para diferentes preferencias de visualización
+- **Diseño Responsivo**: Experiencia óptima en todos los dispositivos
+- **Componentes Reutilizables**: Biblioteca de UI personalizada con Shadcn UI
+
+## Estructura del Proyecto
+
+```
+/
+├── app/                   # Páginas y rutas de la aplicación
+│   ├── dashboard/         # Panel principal de estadísticas
+│   ├── signin/            # Página de inicio de sesión
+│   └── register/          # Página de registro
+├── components/            # Componentes reutilizables
+│   ├── auth/              # Componentes de autenticación
+│   ├── dashboard/         # Componentes del panel
+│   └── ui/                # Componentes de interfaz genéricos
+├── lib/                   # Utilidades y configuraciones
+└── public/                # Archivos estáticos
+```
+
+## Tecnologías Principales
+
+- **Next.js 15**: Framework React con renderizado híbrido
+- **React 19**: Biblioteca para construcción de interfaces
+- **Tailwind CSS 4**: Framework CSS utilitario
+- **Shadcn UI**: Componentes de UI reutilizables
+- **React Hook Form**: Manejo eficiente de formularios
+- **Zod**: Validación de esquemas
+- **Recharts**: Visualizaciones de datos
+- **Axios**: Cliente HTTP para comunicación con el backend
+- **Sonner**: Sistema de notificaciones elegante
+
+## Inicio Rápido
+
+1. Instala las dependencias:
+
+```bash
+npm install
+```
+
+2. Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Abre [http://localhost:3000](http://localhost:3000) en tu navegador
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts Disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **dev**: Inicia el servidor de desarrollo con Turbopack para recarga rápida
+- **build**: Genera la aplicación para producción
+- **start**: Inicia la aplicación compilada
+- **lint**: Ejecuta ESLint para verificar la calidad del código
 
-## Learn More
+## Conexión con el Backend
 
-To learn more about Next.js, take a look at the following resources:
+Por defecto, la aplicación se conecta a una API en `http://localhost:3001`. Puedes modificar esta configuración en las variables de entorno:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+# .env.local
+NEXT_PUBLIC_API_URL=http://tu-backend-url
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Despliegue
 
-## Deploy on Vercel
+Para desplegar en Vercel:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O configura un despliegue automático desde GitHub.
+
+## Desarrollo
+
+### Agregar Nuevas Páginas
+
+1. Crea un nuevo directorio en `app/`
+2. Añade un archivo `page.tsx` con el componente de la página
+
+### Componentes Personalizados
+
+Usa los componentes de Shadcn UI como base y personalízalos según sea necesario:
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+### Estilización
+
+El proyecto utiliza Tailwind CSS para estilos. Configura tus propios estilos en:
+
+- `app/globals.css` - Estilos globales
+- `tailwind.config.ts` - Configuración de Tailwind
+
+## Recursos
+
+- [Documentación de Next.js](https://nextjs.org/docs)
+- [Documentación de Tailwind CSS](https://tailwindcss.com/docs)
+- [Guía de Shadcn UI](https://ui.shadcn.com)
+
+## Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
