@@ -8,6 +8,14 @@ export interface ClickStatistic {
   updatedAt: string;
 }
 
+export interface UniqueClickStatistic {
+  id: string;
+  text: string;
+  userId: string;
+  count: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 export interface SimpleClickStatistic {
   text: string;
@@ -40,6 +48,21 @@ export const statisticsAPI = {
   // Register a simple click (without authentication, using UUID)
   registerSimpleClick: async (data: SimpleClickStatistic): Promise<ClickStatistic> => {
     const response = await api.post<ClickStatistic>('/click-statistics/simple', data);
+    return response.data;
+  },
+
+  // Get unique click statistics for authenticated user
+  getMyUniqueClicks: async (): Promise<UniqueClickStatistic[]> => {
+    const response = await api.get<UniqueClickStatistic[]>('/unique-click-statistics/me');
+    return response.data;
+  },
+  
+  // Get all clicks by text for authenticated user
+  getClicksByText: async (text: string, personalToken: string): Promise<ClickStatistic[]> => {
+    const response = await api.post<ClickStatistic[]>('/click-statistics/by-text', {
+      text,
+      personalToken
+    });
     return response.data;
   }
 }; 
